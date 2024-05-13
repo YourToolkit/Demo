@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 1074328d99d348d4b26e92ecadb3c26f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - CurrentTilemap: {instanceID: 0}
+  - GridConfigDatabase: {fileID: 11400000, guid: d3715d8b25775c045a07bbd2a52ae5c6, type: 2}
+  - Config: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
