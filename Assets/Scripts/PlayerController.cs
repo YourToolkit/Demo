@@ -1,3 +1,6 @@
+using System;
+using MyGridSystem;
+using MyTiles;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -13,12 +16,43 @@ public class PlayerController : MonoBehaviour
     public Transform BulletSpawnPoint;
     public float FireRate = 0.5f;
     public float RecoilForce = 2f;
+    private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        if (GetComponent<GridTileBase>().CurrentState.GameMode == GameMode.EditorMode)
+        {
+            GetComponent<BoxCollider2D>().enabled = false;
+            rb.gravityScale = 0;
+        }
+    }
 
     private void Update()
     {
+        if (GetComponent<GridTileBase>().CurrentState.GameMode == GameMode.EditorMode)
+        {
+            return;
+        }
+
+        GetComponent<BoxCollider2D>().enabled = true;
+        rb.gravityScale = 1;
         var moveHorizontal = Input.GetAxis("Horizontal");
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(moveHorizontal * Speed, rb.velocity.y);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
+        if (hit.collider != null && hit.collider.CompareTag("Wall"))
+        {
+            Debug.Log("Grounded");
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -43,22 +77,6 @@ public class PlayerController : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
-        }
     }
 
     void Shoot()

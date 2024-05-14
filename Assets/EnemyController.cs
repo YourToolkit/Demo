@@ -1,4 +1,6 @@
 using System.Collections;
+using MyGridSystem;
+using MyTiles;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -9,16 +11,34 @@ public class EnemyController : MonoBehaviour
     private int _health;
     private Color _defaultColor;
     public GameObject ExplosionPrefab;
+    [SerializeField] private float _wallDistance = 0.1f;
+    private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
 
     // Start is called before the first frame update
     private void Start()
     {
         _health = MaxHealth;
-        _defaultColor = GetComponent<SpriteRenderer>().color;
+        _defaultColor = GetComponentInChildren<SpriteRenderer>().color;
     }
 
     void Update()
     {
+        if (GetComponent<GridTileBase>().CurrentState.GameMode == GameMode.EditorMode)
+        {
+            GetComponent<BoxCollider2D>().enabled = false;
+            rb.gravityScale = 0;
+            return;
+        }
+
+        GetComponent<BoxCollider2D>().enabled = true;
+        rb.gravityScale = 1;
+
         if (MovingRight)
         {
             transform.Translate(Vector2.right * Speed * Time.deltaTime);
@@ -26,6 +46,17 @@ public class EnemyController : MonoBehaviour
         else
         {
             transform.Translate(Vector2.left * Speed * Time.deltaTime);
+        }
+
+        RaycastHit2D wallInfo =
+            Physics2D.Raycast(transform.position, MovingRight ? Vector2.right : Vector2.left, _wallDistance);
+
+        if (wallInfo.collider != null)
+        {
+            if (wallInfo.collider.CompareTag("Wall"))
+            {
+                Flip();
+            }
         }
     }
 
@@ -49,7 +80,7 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator HitAnimation()
     {
-        var spriteRenderer = GetComponent<SpriteRenderer>();
+        var spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         for (int i = 0; i < 3; i++)
         {
             spriteRenderer.color = Color.white;

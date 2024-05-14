@@ -20,7 +20,10 @@ namespace MyMapManager
 
         private void OnValidate()
         {
-            
+            if (TileMapList == null || TileMapList.Count == 0)
+            {
+                return;
+            }
             CurrentState.TilemapList = TileMapList;
             CurrentState.TileDictList = TileDictList;
             CurrentState.CurrentTileMap = CurrentTileMap;

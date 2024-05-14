@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using MyGridSystem;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -14,13 +15,18 @@ public class SceneController : MonoBehaviour
 
     void Start()
     {
-        transform.position = new Vector3(0, StartValue, 0);
-        transform.DOMoveY(EndValue, Duration)
-            .SetEase(Ease.OutElastic);
+        
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            transform.position = new Vector3(0, StartValue, 0);
+            transform.DOMoveY(EndValue, Duration)
+                .SetEase(Ease.OutElastic);
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             //restart the scene

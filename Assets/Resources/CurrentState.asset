@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1074328d99d348d4b26e92ecadb3c26f, type: 3}
+  m_Name: CurrentState
+  m_EditorClassIdentifier: 
+  TilemapList:
+  - {fileID: 0}
+  CurrentZPosition: 0
+  CurrentTileMap: {fileID: 0}
+  CurrentTileBaseType: 3
+  TilePrefabs:
+  - {fileID: 5977046930978669369, guid: 7a6ed9249da284345ae26be4a391d1af, type: 3}
+  - {fileID: 4448380433211847787, guid: db333529bad5bac4eb2ad778ae588889, type: 3}
+  - {fileID: 4815558471371909230, guid: a823044f18da43a47af10ec028278d7d, type: 3}
+  - {fileID: 626666787034029501, guid: 613be076e5394a14b93f844501ec271c, type: 3}
+  Tile: {fileID: 5977046930978669369, guid: 7a6ed9249da284345ae26be4a391d1af, type: 3}
+  GameMode: 1
+  IsDragging: 0

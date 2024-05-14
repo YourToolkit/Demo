@@ -38,25 +38,31 @@ public class CurrentState : ScriptableObject
 
     public void Reset()
     {
-        if (TilePrefabs == null)
-        {
-            Debug.LogWarning("Please config your grid tile bases first");
-            return;
-        }
-
         TileDictList = new List<Dictionary<Vector3Int, TileInfo>>();
         TilemapList = new List<Tilemap>();
         CurrentZPosition = 0;
         CurrentTileMap = null;
         CurrentTileMapDict = null;
-        CurrentTileBaseType = TilePrefabs.First().TileData.TileBaseType;
         CurrentTool = new BrushTool(this);
-        Tile = TilePrefabs.First();
         IsDragging = false;
+        if (TilePrefabs == null || TilePrefabs.Length == 0)
+        {
+            Debug.LogWarning("Please config your grid tile bases first");
+            return;
+        }
+
+        CurrentTileBaseType = TilePrefabs.First().TileData.TileBaseType;
+        Tile = TilePrefabs.First();
     }
 
     public void OnValidate()
     {
+        if (TilePrefabs == null || TilePrefabs.Length == 0)
+        {
+            Debug.LogWarning("Please config your grid tile bases first");
+            return;
+        }
+
         Tile = TilePrefabs?.First(c => c.TileData.TileBaseType == CurrentTileBaseType);
     }
 

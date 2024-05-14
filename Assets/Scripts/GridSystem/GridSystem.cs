@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using MyTiles;
+using UnityEditor;
 
 namespace MyGridSystem
 {
@@ -47,6 +48,20 @@ namespace MyGridSystem
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                _currentState.GameMode = GameMode.PlayMode;
+                //restart the scene
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                _currentState.GameMode = GameMode.EditorMode;
+                //restart the scene
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+
             if (_currentState.GameMode != GameMode.EditorMode)
                 return;
             _cellPosition = _grid.WorldToCell(_cam.ScreenToWorldPoint(Input.mousePosition));

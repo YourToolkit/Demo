@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MyGridSystem;
 using UnityEngine;
 
 public class CameraMove : MonoBehaviour
@@ -15,6 +16,7 @@ public class CameraMove : MonoBehaviour
 
     private Vector3 _initialPosition;
     private Quaternion _initialRotation;
+    [SerializeField] private CurrentState _currentState;
 
     private void Start()
     {
@@ -24,6 +26,11 @@ public class CameraMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_currentState.GameMode == GameMode.EditorMode)
+        {
+            return;
+        }
+
         if (Target != null)
         {
             var difference = Target.position - transform.position;
@@ -33,6 +40,11 @@ public class CameraMove : MonoBehaviour
 
     private void Update()
     {
+        if (_currentState.GameMode == GameMode.EditorMode)
+        {
+            return;
+        }
+
         if (_trauma > 0)
         {
             _trauma -= Time.deltaTime * TraumaDecrease;
