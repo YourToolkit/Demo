@@ -37,10 +37,10 @@ public class CurrentState : ScriptableObject
     public GameMode GameMode;
     public bool IsDragging;
 
-    public MapManager MapManager;
+    public MapManager MapManager; 
 
     public void Reset()
-    {
+    { 
         TileDictList = new List<Dictionary<Vector3Int, TileInfo>>();
         TilemapList = new List<Tilemap>();
         CurrentZPosition = 0;

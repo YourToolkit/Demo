@@ -144,6 +144,8 @@ namespace MyGridSystem
             {
                 _mapManager = new GameObject(SceneManager.GetActiveScene().name).AddComponent<MapManager>();
                 _mapManager.transform.SetParent(transform);
+                _mapManager.CurrentState = _currentState;
+                _currentState.MapManager = _mapManager;
             }
 
             var newTilemap = new GameObject("Tilemap").AddComponent<Tilemap>();
@@ -199,6 +201,10 @@ namespace MyGridSystem
                 _currentState.TileDictList = _mapManager.TileDictList;
                 _currentState.CurrentTileMap = _mapManager.TileMapList.Last();
                 _currentState.CurrentTileMapDict = _mapManager.TileDictList.Last();
+            }
+            else
+            {
+                _currentState.Reset();
             }
 
             var dataPath = "Assets/MapData/" + SceneManager.GetActiveScene().name + ".json";

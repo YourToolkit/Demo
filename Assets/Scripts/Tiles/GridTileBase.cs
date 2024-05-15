@@ -9,7 +9,7 @@ namespace MyTiles
     public abstract class GridTileBase : MonoBehaviour
     {
         [SerializeField] protected Vector3Int Coordinate;
-        [SerializeField] protected SpriteRenderer SpriteRenderer;
+        public SpriteRenderer SpriteRenderer;
         public CurrentState CurrentState;
 
         //用于存储Data到Json，如果prefab中有特殊的data，你需要重写这个property里面的内容，来get到你想要的数据

@@ -688,6 +688,34 @@
           "z": 0,
           "magnitude": 14.0,
           "sqrMagnitude": 196
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "z": 0,
+          "magnitude": 9.0,
+          "sqrMagnitude": 81
+        },
+        {
+          "x": 9,
+          "y": 1,
+          "z": 0,
+          "magnitude": 9.055386,
+          "sqrMagnitude": 82
+        },
+        {
+          "x": 9,
+          "y": 2,
+          "z": 0,
+          "magnitude": 9.219544,
+          "sqrMagnitude": 85
+        },
+        {
+          "x": 9,
+          "y": 3,
+          "z": 0,
+          "magnitude": 9.486833,
+          "sqrMagnitude": 90
         }
       ],
       "TileDataset": [
@@ -1267,6 +1295,30 @@
           "Walkable": true,
           "TileBaseType": 1,
           "Id": "1e3c5460-1dd8-4c51-98c1-146d3e3377c3"
+        },
+        {
+          "$type": "MyTiles.WalkableTileData, Assembly-CSharp",
+          "Walkable": false,
+          "TileBaseType": 1,
+          "Id": "e044a1ef-c25d-40e8-a346-7f981de8c147"
+        },
+        {
+          "$type": "MyTiles.WalkableTileData, Assembly-CSharp",
+          "Walkable": false,
+          "TileBaseType": 1,
+          "Id": "a268dff1-ed18-4d42-98cf-bffc8a690a25"
+        },
+        {
+          "$type": "MyTiles.WalkableTileData, Assembly-CSharp",
+          "Walkable": false,
+          "TileBaseType": 1,
+          "Id": "82738cb2-a56d-47d1-921f-0251512f2ab3"
+        },
+        {
+          "$type": "MyTiles.WalkableTileData, Assembly-CSharp",
+          "Walkable": false,
+          "TileBaseType": 1,
+          "Id": "1d702049-90bb-40c5-b66a-ce803c8dd482"
         }
       ]
     }

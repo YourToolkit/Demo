@@ -1,6 +1,7 @@
 using System;
 using MyGridSystem;
 using MyTiles;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -39,21 +40,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        GetComponent<BoxCollider2D>().enabled = true;
-        rb.gravityScale = 1;
-        var moveHorizontal = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveHorizontal * Speed, rb.velocity.y);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
-        if (hit.collider != null && hit.collider.CompareTag("Wall"))
-        {
-            Debug.Log("Grounded");
-            isGrounded = true;
-        }
-        else
-        {
-            isGrounded = false;
-        }
-
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
@@ -64,6 +50,31 @@ public class PlayerController : MonoBehaviour
             nextFire = Time.time + FireRate;
             Shoot();
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (GetComponent<GridTileBase>().CurrentState.GameMode == GameMode.EditorMode)
+        {
+            return;
+        }
+
+        GetComponent<BoxCollider2D>().enabled = true;
+        rb.gravityScale = 1;
+        var moveHorizontal = Input.GetAxis("Horizontal");
+        transform.position = new Vector2(transform.position.x + moveHorizontal * Speed * Time.deltaTime,
+            transform.position.y);
+        int layerMask = 1 << LayerMask.NameToLayer("Wall");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f, layerMask);
+        if (hit.collider != null && hit.collider.CompareTag("Wall"))
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
 
         if (moveHorizontal > 0 && !facingRight || moveHorizontal < 0 && facingRight)
         {

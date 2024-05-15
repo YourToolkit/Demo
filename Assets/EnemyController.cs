@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     public GameObject ExplosionPrefab;
     [SerializeField] private float _wallDistance = 0.1f;
     private Rigidbody2D rb;
+    public Transform RaycastOrigin;
 
     private void Awake()
     {
@@ -24,7 +25,6 @@ public class EnemyController : MonoBehaviour
             return;
         }
     }
-
 
     // Start is called before the first frame update
     private void Start()
@@ -54,15 +54,15 @@ public class EnemyController : MonoBehaviour
             transform.Translate(Vector2.left * Speed * Time.deltaTime);
         }
 
+        int layerMask = 1 << LayerMask.NameToLayer("Wall");
         RaycastHit2D wallInfo =
-            Physics2D.Raycast(transform.position, MovingRight ? Vector2.right : Vector2.left, _wallDistance);
+            Physics2D.Raycast(RaycastOrigin.position, MovingRight ? Vector2.right : Vector2.left, _wallDistance,
+                layerMask);
 
-        if (wallInfo.collider != null)
+        if (wallInfo.collider != null && wallInfo.collider.CompareTag("Wall"))
         {
-            if (wallInfo.collider.CompareTag("Wall"))
-            {
-                Flip();
-            }
+            Debug.Log("Wall");
+            Flip();
         }
     }
 
@@ -104,13 +104,6 @@ public class EnemyController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            Flip();
-        }
-    }
 
     void Flip()
     {

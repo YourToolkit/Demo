@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MyGridSystem;
 using MyTiles;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -31,11 +32,39 @@ namespace MyMapManager
                 return;
             }
 
+            Debug.Log("OnValidate");
             CurrentState.TilemapList = TileMapList;
             CurrentState.TileDictList = TileDictList;
             CurrentState.CurrentTileMap = CurrentTileMap;
             CurrentState.CurrentTileMapDict = CurrentTileMapDict;
             CurrentState.MapManager = this;
+        }
+
+        private void FadeInactiveLayers()
+        {
+            if (CurrentTileMap == null || CurrentState.GameMode != GameMode.EditorMode)
+            {
+                return;
+            }
+
+
+            foreach (var layerData in TileDictList)
+            {
+                if (layerData == CurrentTileMapDict)
+                {
+                    foreach (var tileInfo in layerData.Values)
+                    {
+                        tileInfo.TileBase.SpriteRenderer.color = new Color(1, 1, 1, 1);
+                    }
+                }
+                else
+                {
+                    foreach (var tileInfo in layerData.Values)
+                    {
+                        tileInfo.TileBase.SpriteRenderer.color = new Color(1, 1, 1, 0.5f);
+                    }
+                }
+            }
         }
     }
 }

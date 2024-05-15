@@ -30,7 +30,23 @@ public class TilePoolManager : MonoBehaviour
         {
             // if there are no inactive objects, create a new one
             Debug.Log("Creating new tile");
-            spawnableTile = Instantiate(tileToSpawn, spawnPosition, spawnRotation, spawnParTransform);
+
+            if (Application.isPlaying)
+            {
+                spawnableTile = Instantiate(tileToSpawn, spawnPosition, spawnRotation, spawnParTransform);
+            }
+            else
+            {
+#if UNITY_EDITOR
+                spawnableTile = UnityEditor.PrefabUtility.InstantiatePrefab(tileToSpawn) as GridTileBase;
+                if (spawnableTile != null)
+                {
+                    spawnableTile.transform.position = spawnPosition;
+                    spawnableTile.transform.rotation = spawnRotation;
+                    spawnableTile.transform.parent = spawnParTransform;
+                }
+#endif
+            }
         }
 
         else
@@ -56,6 +72,7 @@ public class TilePoolManager : MonoBehaviour
             pool = new PooledTileInfo() { TileBaseType = tile.TileData.TileBaseType };
             TilePools.Add(pool);
         }
+
         tile.gameObject.SetActive(false);
         pool.InactiveObjects.Add(tile);
     }
