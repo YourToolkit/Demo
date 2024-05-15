@@ -42,11 +42,10 @@ namespace MyMapManager
 
         public void FadeInactiveLayers()
         {
-            if (CurrentTileMap == null || CurrentState.GameMode != GameMode.EditorMode)
+            if (CurrentTileMap == null || CurrentState.GameMode != GameMode.EditorMode || TileDictList == null)
             {
                 return;
             }
-
 
             foreach (var layerData in TileDictList)
             {
