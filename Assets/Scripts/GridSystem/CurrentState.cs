@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MyGridSystem;
+using MyMapManager;
 using MyToolSystem;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -36,6 +37,8 @@ public class CurrentState : ScriptableObject
     public GameMode GameMode;
     public bool IsDragging;
 
+    public MapManager MapManager;
+
     public void Reset()
     {
         TileDictList = new List<Dictionary<Vector3Int, TileInfo>>();
@@ -60,6 +63,13 @@ public class CurrentState : ScriptableObject
         if (TilePrefabs == null || TilePrefabs.Length == 0)
         {
             Debug.LogWarning("Please config your grid tile bases first");
+            return;
+        }
+
+        if (MapManager == null)
+        {
+            Reset();
+            Debug.LogWarning("Please assign the map manager to the current state");
             return;
         }
 

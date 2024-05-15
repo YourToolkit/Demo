@@ -17,6 +17,12 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (GetComponent<GridTileBase>().CurrentState.GameMode == GameMode.EditorMode)
+        {
+            GetComponent<BoxCollider2D>().enabled = false;
+            rb.gravityScale = 0;
+            return;
+        }
     }
 
 

@@ -20,14 +20,22 @@ namespace MyMapManager
 
         private void OnValidate()
         {
+            if (CurrentState == null)
+            {
+                Debug.LogWarning("CurrentState has not been set in the Inspector");
+                return;
+            }
+
             if (TileMapList == null || TileMapList.Count == 0)
             {
                 return;
             }
+
             CurrentState.TilemapList = TileMapList;
             CurrentState.TileDictList = TileDictList;
             CurrentState.CurrentTileMap = CurrentTileMap;
             CurrentState.CurrentTileMapDict = CurrentTileMapDict;
+            CurrentState.MapManager = this;
         }
     }
 }

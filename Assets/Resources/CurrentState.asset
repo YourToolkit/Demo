@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1074328d99d348d4b26e92ecadb3c26f, type: 3}
   m_Name: CurrentState
   m_EditorClassIdentifier: 
-  TilemapList:
-  - {fileID: 0}
+  TilemapList: []
   CurrentZPosition: 0
   CurrentTileMap: {fileID: 0}
   CurrentTileBaseType: 3
@@ -23,5 +22,5 @@ MonoBehaviour:
   - {fileID: 4815558471371909230, guid: a823044f18da43a47af10ec028278d7d, type: 3}
   - {fileID: 626666787034029501, guid: 613be076e5394a14b93f844501ec271c, type: 3}
   Tile: {fileID: 5977046930978669369, guid: 7a6ed9249da284345ae26be4a391d1af, type: 3}
-  GameMode: 1
+  GameMode: 0
   IsDragging: 0

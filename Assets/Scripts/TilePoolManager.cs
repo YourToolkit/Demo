@@ -53,13 +53,11 @@ public class TilePoolManager : MonoBehaviour
         PooledTileInfo pool = TilePools.Find(p => p.TileBaseType == tile.TileData.TileBaseType);
         if (pool == null)
         {
-            Debug.LogWarning("Trying to release an object that is not pooled: " + tile.TileData.TileBaseType);
+            pool = new PooledTileInfo() { TileBaseType = tile.TileData.TileBaseType };
+            TilePools.Add(pool);
         }
-        else
-        {
-            tile.gameObject.SetActive(false);
-            pool.InactiveObjects.Add(tile);
-        }
+        tile.gameObject.SetActive(false);
+        pool.InactiveObjects.Add(tile);
     }
 }
 

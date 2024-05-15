@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = 1;
         var moveHorizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveHorizontal * Speed, rb.velocity.y);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
         if (hit.collider != null && hit.collider.CompareTag("Wall"))
         {
             Debug.Log("Grounded");

@@ -6,8 +6,8 @@ namespace MyTiles
 {
     public class TileInfo
     {
-        public GridTileBase TileBase;
-        public BaseTileData TileData;
+        public readonly GridTileBase TileBase;
+        public readonly BaseTileData TileData;
 
 
         public TileInfo(TileBaseType tileBaseType = TileBaseType.NotSet, GridTileBase tileBase = null)

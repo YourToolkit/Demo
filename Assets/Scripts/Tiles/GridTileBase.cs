@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using MyGridSystem;
 using UnityEngine;
@@ -13,6 +14,22 @@ namespace MyTiles
 
         //用于存储Data到Json，如果prefab中有特殊的data，你需要重写这个property里面的内容，来get到你想要的数据
         public virtual BaseTileData TileData { get; protected set; }
+
+        protected virtual void OnValidate()
+        {
+            if (CurrentState == null || CurrentState.CurrentTileMapDict == null)
+            {
+                return;
+            }
+
+            if (CurrentState.CurrentTileMapDict.TryGetValue(Coordinate, out TileInfo tileInfo))
+            {
+                if (tileInfo.TileBase == this)
+                {
+                    TileData = tileInfo.TileData;
+                }
+            }
+        }
 
 
         //这是用于未有原先数据生成新的prefab的，所以我们并没有先前的TileData，所以我们只能去用TileBaseType去初始化

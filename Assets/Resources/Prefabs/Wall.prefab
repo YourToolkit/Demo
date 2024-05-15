@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2106020698732567293}
   - component: {fileID: 6967033767948614949}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WallSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8276226771591610673}
   - component: {fileID: 4815558471371909230}
   - component: {fileID: 6614835743259987470}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}

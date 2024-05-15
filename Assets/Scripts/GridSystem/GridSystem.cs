@@ -107,6 +107,7 @@ namespace MyGridSystem
             //use the key "S" to save the map, and the key "L" to load the map
             if (Input.GetKeyDown(KeyCode.S))
             {
+                Debug.Log("haha");
                 SaveMapData();
             }
 
