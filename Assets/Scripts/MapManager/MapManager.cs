@@ -40,7 +40,7 @@ namespace MyMapManager
             CurrentState.MapManager = this;
         }
 
-        private void FadeInactiveLayers()
+        public void FadeInactiveLayers()
         {
             if (CurrentTileMap == null || CurrentState.GameMode != GameMode.EditorMode)
             {
@@ -52,16 +52,20 @@ namespace MyMapManager
             {
                 if (layerData == CurrentTileMapDict)
                 {
+                    Debug.Log("Current Layer is Active");
+                    Debug.Log(layerData.Count);
                     foreach (var tileInfo in layerData.Values)
                     {
-                        tileInfo.TileBase.SpriteRenderer.color = new Color(1, 1, 1, 1);
+                        var color = tileInfo.TileBase.SpriteRenderer.color;
+                        tileInfo.TileBase.SpriteRenderer.color = new Color(color.r, color.g, color.b, 1f);
                     }
                 }
                 else
                 {
                     foreach (var tileInfo in layerData.Values)
                     {
-                        tileInfo.TileBase.SpriteRenderer.color = new Color(1, 1, 1, 0.5f);
+                        var color = tileInfo.TileBase.SpriteRenderer.color;
+                        tileInfo.TileBase.SpriteRenderer.color = new Color(color.r, color.g, color.b, 0.5f);
                     }
                 }
             }

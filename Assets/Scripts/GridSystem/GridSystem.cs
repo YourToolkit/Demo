@@ -29,7 +29,7 @@ namespace MyGridSystem
             {
                 if (!_mapManager)
                 {
-                    AddNewTileMap();
+                    AddNewLayer();
                     _mapManager.TileDictList = _currentState.TileDictList;
                     _mapManager.TileMapList = _currentState.TilemapList;
                     _mapManager.CurrentTileMapDict = _currentState.CurrentTileMapDict;
@@ -38,6 +38,7 @@ namespace MyGridSystem
                 else
                 {
                     LoadMapData();
+                    _mapManager.FadeInactiveLayers();
                 }
             }
 
@@ -96,12 +97,13 @@ namespace MyGridSystem
             // all of these just for testing, need to be deleted in the future
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                SwitchTilemap();
+                Debug.Log("Switch Layer");
+                SwitchLayer();
             }
 
             if (Input.GetKeyDown(KeyCode.A))
             {
-                AddNewTileMap();
+                AddNewLayer();
             }
 
             //use the key "S" to save the map, and the key "L" to load the map
@@ -138,7 +140,7 @@ namespace MyGridSystem
         /// 创建一个tilemap Gameobject, gameobject 有tilemap这个component
         ///  tilemap的父transform为transform, tilemap 中的sortingOrder = tilemapList.count
         /// </summary>
-        private void CreateTilemap()
+        private void CreateLayer()
         {
             if (_mapManager == null)
             {
@@ -158,22 +160,26 @@ namespace MyGridSystem
         }
 
 
-        private void AddNewTileMap()
+        private void AddNewLayer()
         {
-            CreateTilemap();
+            CreateLayer();
             _currentState.TileDictList.Add(new Dictionary<Vector3Int, TileInfo>());
             _currentState.CurrentTileMapDict =
                 _currentState.TileDictList[^1];
             _mapManager.CurrentTileMapDict = _currentState.CurrentTileMapDict;
+            _mapManager.FadeInactiveLayers();
         }
 
 
-        private void SwitchTilemap()
+        private void SwitchLayer()
         {
             int currentIndex = _currentState.TilemapList.IndexOf(_currentState.CurrentTileMap);
             int nextIndex = (currentIndex + 1) % _currentState.TilemapList.Count;
             _currentState.CurrentTileMap = _currentState.TilemapList[nextIndex];
             _currentState.CurrentTileMapDict = _currentState.TileDictList[nextIndex];
+            _mapManager.CurrentTileMap = _currentState.CurrentTileMap;
+            _mapManager.CurrentTileMapDict = _currentState.CurrentTileMapDict;
+            _mapManager.FadeInactiveLayers();
         }
 
 
@@ -268,7 +274,7 @@ namespace MyGridSystem
                 {
                     for (int i = 0; i < countDiff; i++)
                     {
-                        AddNewTileMap();
+                        AddNewLayer();
                         GenerateTiles(temp[_currentState.TileDictList.Count - 1]);
                     }
                 }

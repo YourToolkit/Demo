@@ -1321,6 +1321,156 @@
           "Id": "1d702049-90bb-40c5-b66a-ce803c8dd482"
         }
       ]
+    },
+    {
+      "TilemapIndex": 1,
+      "TileCellPositions": [
+        {
+          "x": 3,
+          "y": 3,
+          "z": 0,
+          "magnitude": 4.2426405,
+          "sqrMagnitude": 18
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "z": 0,
+          "magnitude": 5.0,
+          "sqrMagnitude": 25
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "z": 0,
+          "magnitude": 5.83095169,
+          "sqrMagnitude": 34
+        },
+        {
+          "x": 6,
+          "y": 3,
+          "z": 0,
+          "magnitude": 6.708204,
+          "sqrMagnitude": 45
+        },
+        {
+          "x": -1,
+          "y": 3,
+          "z": 0,
+          "magnitude": 3.1622777,
+          "sqrMagnitude": 10
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "z": 0,
+          "magnitude": 3.0,
+          "sqrMagnitude": 9
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "z": 0,
+          "magnitude": 3.1622777,
+          "sqrMagnitude": 10
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "z": 0,
+          "magnitude": 3.60555124,
+          "sqrMagnitude": 13
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "z": 0,
+          "magnitude": 6.40312433,
+          "sqrMagnitude": 41
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "z": 0,
+          "magnitude": 7.071068,
+          "sqrMagnitude": 50
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "z": 0,
+          "magnitude": 7.81025,
+          "sqrMagnitude": 61
+        }
+      ],
+      "TileDataset": [
+        {
+          "$type": "MyTiles.WalkableTileData, Assembly-CSharp",
+          "Walkable": false,
+          "TileBaseType": 1,
+          "Id": "6f4e3479-530f-4cc0-83b2-3aa4d311b526"
+        },
+        {
+          "$type": "MyTiles.WalkableTileData, Assembly-CSharp",
+          "Walkable": false,
+          "TileBaseType": 1,
+          "Id": "cf1aa26e-40af-44bc-a8ac-dee7010c7b35"
+        },
+        {
+          "$type": "MyTiles.WalkableTileData, Assembly-CSharp",
+          "Walkable": false,
+          "TileBaseType": 1,
+          "Id": "25dc61e8-7e48-41a7-82d9-55c67919fdef"
+        },
+        {
+          "$type": "MyTiles.WalkableTileData, Assembly-CSharp",
+          "Walkable": false,
+          "TileBaseType": 1,
+          "Id": "fb3f909c-1667-409b-a03c-75c45626b2a7"
+        },
+        {
+          "$type": "MyTiles.WalkableTileData, Assembly-CSharp",
+          "Walkable": false,
+          "TileBaseType": 1,
+          "Id": "e9493e7a-4f0a-4067-9600-240faf84a942"
+        },
+        {
+          "$type": "MyTiles.WalkableTileData, Assembly-CSharp",
+          "Walkable": false,
+          "TileBaseType": 1,
+          "Id": "24a80657-7a5c-44d1-bb54-510ec5745792"
+        },
+        {
+          "$type": "MyTiles.WalkableTileData, Assembly-CSharp",
+          "Walkable": false,
+          "TileBaseType": 1,
+          "Id": "1d6a1d39-0cbd-4d1e-81d4-61560fbbf500"
+        },
+        {
+          "$type": "MyTiles.WalkableTileData, Assembly-CSharp",
+          "Walkable": false,
+          "TileBaseType": 1,
+          "Id": "6f13f770-988a-48c1-8ee6-6c9702cac5db"
+        },
+        {
+          "$type": "MyTiles.WalkableTileData, Assembly-CSharp",
+          "Walkable": false,
+          "TileBaseType": 1,
+          "Id": "b20afc76-ff58-48bb-b280-b775fbc1d97e"
+        },
+        {
+          "$type": "MyTiles.WalkableTileData, Assembly-CSharp",
+          "Walkable": false,
+          "TileBaseType": 1,
+          "Id": "413b6e0b-9c3e-4102-93ec-02d5bf6d1880"
+        },
+        {
+          "$type": "MyTiles.WalkableTileData, Assembly-CSharp",
+          "Walkable": false,
+          "TileBaseType": 1,
+          "Id": "68cf036b-85cd-4cee-9b82-0d4d76905471"
+        }
+      ]
     }
   ]
 }
