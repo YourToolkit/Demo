@@ -19,8 +19,8 @@ public class MyPrefabBrush : GridBrush
         {
             Debug.LogWarning("Please click the correct tile map or your Current State is empty");
             return;
-
         }
+
         var index = CurrentState.TilemapList.IndexOf(brushTarget.GetComponent<Tilemap>());
         var data = CurrentState.TileDictList[index];
 
@@ -53,6 +53,7 @@ public class MyPrefabBrush : GridBrush
         Transform erased = GetTransformInCell(grid, brushTarget.transform, position);
         if (erased != null)
         {
+            Debug.Log("Erasing");
             CurrentState.CurrentTileMapDict.Remove(position);
             Undo.DestroyObjectImmediate(erased.gameObject);
         }
