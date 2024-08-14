@@ -244,7 +244,6 @@ namespace MyGridSystem
             var diff = savedDataIds.Except(mapManagerIds).ToList();
             foreach (var Id in diff)
             {
-                Debug.Log("Process Difference from save Data");
                 var tilesToGenerate = dict.Where(pair => pair.Value.TileData.Id == Id);
                 GenerateTiles(tilesToGenerate);
             }

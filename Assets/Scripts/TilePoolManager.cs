@@ -19,7 +19,6 @@ public class TilePoolManager : MonoBehaviour
         if (pool == null)
         {
             pool = new PooledTileInfo() { TileBaseType = tileBaseType };
-            Debug.Log(tileBaseType);
             TilePools.Add(pool);
         }
 
@@ -29,7 +28,6 @@ public class TilePoolManager : MonoBehaviour
         if (spawnableTile == null)
         {
             // if there are no inactive objects, create a new one
-            Debug.Log("Creating new tile");
 
             if (Application.isPlaying)
             {

@@ -52,7 +52,6 @@ namespace MyMapManager
                 if (layerData == CurrentTileMapDict)
                 {
                     Debug.Log("Current Layer is Active");
-                    Debug.Log(layerData.Count);
                     foreach (var tileInfo in layerData.Values)
                     {
                         var color = tileInfo.TileBase.SpriteRenderer.color;

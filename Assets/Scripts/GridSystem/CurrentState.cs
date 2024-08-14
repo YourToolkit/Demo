@@ -69,7 +69,7 @@ public class CurrentState : ScriptableObject
         if (MapManager == null)
         {
             Reset();
-            Debug.LogWarning("Please assign the map manager to the current state");
+            Debug.LogWarning("Please create assign the map manager to the current state or load map data");
             return;
         }
 
